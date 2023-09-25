@@ -1,8 +1,8 @@
 package com.hendisantika.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+//import lombok.AllArgsConstructor;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
  * Date: 04/10/21
  * Time: 08.12
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class Customer {
     private int id;
     private String name;
