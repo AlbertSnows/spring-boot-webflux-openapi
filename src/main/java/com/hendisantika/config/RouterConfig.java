@@ -1,8 +1,8 @@
 package com.hendisantika.config;
 
-import com.hendisantika.dto.Customer;
+//import com.hendisantika.dto.Customer;
 import com.hendisantika.handler.CustomerHandler;
-import com.hendisantika.handler.CustomerStreamHandler;
+//import com.hendisantika.handler.CustomerStreamHandler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -36,8 +36,8 @@ public class RouterConfig {
     @Autowired
     private CustomerHandler handler;
 
-    @Autowired
-    private CustomerStreamHandler streamHandler;
+//    @Autowired
+//    private CustomerStreamHandler streamHandler;
 
     @Bean
     @RouterOperations(
@@ -57,7 +57,7 @@ public class RouterConfig {
                                                     responseCode = "200",
                                                     description = "successful operation",
                                                     content = @Content(schema = @Schema(
-                                                            implementation = Customer.class
+                                                            implementation = Integer.class
                                                     ))
                                             )
                                     }
@@ -78,7 +78,7 @@ public class RouterConfig {
                                                     responseCode = "200",
                                                     description = "successful operation",
                                                     content = @Content(schema = @Schema(
-                                                            implementation = Customer.class
+                                                            implementation = Integer.class
                                                     ))
                                             ),
                                             @ApiResponse(responseCode = "404", description = "customer not found with" +
@@ -112,7 +112,7 @@ public class RouterConfig {
                                     },
                                     requestBody = @RequestBody(
                                             content = @Content(schema = @Schema(
-                                                    implementation = Customer.class
+                                                    implementation = Integer.class
                                             ))
                                     )
 
@@ -125,9 +125,9 @@ public class RouterConfig {
     public RouterFunction<ServerResponse> routerFunction() {
         return RouterFunctions.route()
                 .GET("/router/customers", handler::loadCustomers)
-                .GET("/router/customers/stream", streamHandler::getCustomers)
-                .GET("/router/customer/{input}", handler::findCustomer)
-                .POST("/router/customer/save", handler::saveCustomer)
+//                .GET("/router/customers/stream", streamHandler::getCustomers)
+//                .GET("/router/customer/{input}", handler::findCustomer)
+//                .POST("/router/customer/save", handler::saveCustomer)
                 .build();
 
     }
