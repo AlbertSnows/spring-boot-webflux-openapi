@@ -1,7 +1,5 @@
 # spring-boot-webflux-openapi
 
-### Things to do list
-
 1. Clone this repository
 2. Navigate to the folder: `cd spring-boot-webflux-openapi`
 3. Run the application: `./gradlew bootRun`
