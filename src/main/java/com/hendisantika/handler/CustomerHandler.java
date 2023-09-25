@@ -9,6 +9,8 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.function.Predicate;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : spring-boot-webflux-openapi
@@ -25,14 +27,17 @@ public class CustomerHandler {
     private CustomerRepository customerRepository;
 
     public Mono<ServerResponse> loadCustomers(ServerRequest request) {
-        Flux<Customer> customerList = customerRepository.getCustomerList();
+        Flux<Integer> customerList = customerRepository.getCustomerList();
         return ServerResponse.ok().body(customerList, Customer.class);
     }
 
     public Mono<ServerResponse> findCustomer(ServerRequest request) {
-        int customerId = Integer.valueOf(request.pathVariable("input"));
+        int customerId =  4; //Integer.parseInt(request.pathVariable("input"));
+        Predicate<Integer> x = c -> c == customerId;
         // dao.getCustomerList().filter(c->c.getId()==customerId).take(1).single();
-        Mono<Customer> customerMono = customerRepository.getCustomerList().filter(c -> c.getId() == customerId).next();
+        Mono<Integer> customerMono = customerRepository.getCustomerList()
+                .filter(x)
+                .next();
         return ServerResponse.ok().body(customerMono, Customer.class);
     }
 

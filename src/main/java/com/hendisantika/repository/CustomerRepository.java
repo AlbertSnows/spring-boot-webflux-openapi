@@ -28,24 +28,26 @@ public class CustomerRepository {
         }
     }
 
-    public List<Customer> getCustomers() {
+    public List<Integer> getCustomers() {
         return IntStream.rangeClosed(1, 10)
-                .peek(CustomerRepository::sleepExecution)
-                .peek(i -> System.out.println("processing count : " + i))
-                .mapToObj(i -> new Customer(i, "customer" + i))
-                .collect(Collectors.toList());
+//                .peek(CustomerRepository::sleepExecution)
+//                .peek(i -> System.out.println("processing count : " + i))
+//                .mapToObj(i -> new Customer(i, "customer" + i))
+                .boxed().collect(Collectors.toList());
     }
 
-    public Flux<Customer> getCustomersStream() {
+    public Flux<Integer> getCustomersStream() {
         return Flux.range(1, 10)
-                .delayElements(Duration.ofSeconds(1))
-                .doOnNext(i -> System.out.println("processing count in stream flow : " + i))
-                .map(i -> new Customer(i, "customer" + i));
+//                .delayElements(Duration.ofSeconds(1))
+//                .doOnNext(i -> System.out.println("processing count in stream flow : " + i))
+//                .map(i -> new Customer(i, "customer" + i))
+                ;
     }
 
-    public Flux<Customer> getCustomerList() {
+    public Flux<Integer> getCustomerList() {
         return Flux.range(1, 50)
-                .doOnNext(i -> System.out.println("processing count in stream flow : " + i))
-                .map(i -> new Customer(i, "customer" + i));
+//                .doOnNext(i -> System.out.println("processing count in stream flow : " + i))
+//                .map(i -> new Customer(i, "customer" + i))
+                ;
     }
 }

@@ -1,6 +1,5 @@
 package com.hendisantika.controller;
 
-import com.hendisantika.dto.Customer;
 import com.hendisantika.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -27,12 +26,12 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping
-    public List<Customer> getAllCustomers() {
+    public List<Integer> getAllCustomers() {
         return customerService.loadAllCustomers();
     }
 
     @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Customer> getAllCustomersStream() {
+    public Flux<Integer> getAllCustomersStream() {
         return customerService.loadAllCustomersStream();
     }
 }

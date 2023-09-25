@@ -1,6 +1,5 @@
 package com.hendisantika.service;
 
-import com.hendisantika.dto.Customer;
 import com.hendisantika.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,17 +22,17 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public List<Customer> loadAllCustomers() {
+    public List<Integer> loadAllCustomers() {
         long start = System.currentTimeMillis();
-        List<Customer> customers = customerRepository.getCustomers();
+        List<Integer> customers = customerRepository.getCustomers();
         long end = System.currentTimeMillis();
         System.out.println("Total execution time : " + (end - start));
         return customers;
     }
 
-    public Flux<Customer> loadAllCustomersStream() {
+    public Flux<Integer> loadAllCustomersStream() {
         long start = System.currentTimeMillis();
-        Flux<Customer> customers = customerRepository.getCustomersStream();
+        Flux<Integer> customers = customerRepository.getCustomersStream();
         long end = System.currentTimeMillis();
         System.out.println("Total execution time : " + (end - start));
         return customers;
